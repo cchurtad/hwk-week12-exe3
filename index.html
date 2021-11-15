@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+          @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+        h1 {
+          font-family: 'Lobster', cursive;
+          font-size: 35px;
+        }
+        body {
+            background: linear-gradient(to right, green 0%, pink 100%);
+            color: white;
+        }
+
+        img {
+            width: 350px;
+            height: auto;
+            border-radius: 3rem;
+        }
+
+        .table {
+            border: solid darkgreen 10px;
+        }
+
+        a:link, a:visited{
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+
+        }
+      
+    </style>
+</head>
+
+<body>
+
+    <table class="table">
+        <tr>
+            <td colspan="2">
+                    <h1>Currency Converter</h1>
+                    <p><strong>   Convert USA Dollars to other currencies.</strong></p>
+            </td>
+        </tr>
+             
+            <tr>
+                <td id="display"></td>
+                <td>
+        <form name="theform">
+                    <table>
+                        <tr>
+                            <td style="float: right">Enter US Dollar Amount:</td>
+                            <td><input name="usDollarfm" size="10"><br></td>
+                        </tr>
+                        <tr>
+                            <td style="float: right;">Euro:</td>
+                            <td style="background-color: white; color: black; font-weight: bold;" id="euroFmOutput"></td>
+                        </tr>
+                        <tr>
+                            <td style="float: right;">Pound sterling:</td>
+                            <td style="background-color: white; color: black; font-weight: bold;" id="poundFmOutput"></td>
+                        </tr>
+                        <tr>
+                            <td style="float: right;">Australian Dollar:</td>
+                            <td style="background-color: white; color: black; font-weight: bold;" id="australianFmOutput"></td>
+                        </tr>
+                        <tr>
+                            <td style="float: right;">Mexican Pesos:</td>
+                            <td style="background-color: white; color: black; font-weight: bold;" id="pesosFmOutput"></td>
+                        </tr>
+                        <tr>
+                            <td style="float: right;">Canadian Dollar:</td>
+                            <td style="background-color: white; color: black; font-weight: bold;" id="canadianFmOutput"></td>
+                        </tr>
+                        <tr>
+                            <td style="float: right;">Turkish lira:</td>
+                            <td style="background-color: white; color: black; font-weight: bold;" id="liraFmOutput"></td>
+                        </tr>
+                        <tr>
+                            <td style="float: right;">Japanese yen:</td>
+                            <td style="background-color: white; color: black; font-weight: bold;" id="yenFmOutput"></td>
+                        </tr>
+                        <tr>
+                            <td style="float: right;">Swiss franc:</td>
+                            <td style="background-color: white; color: black; font-weight: bold;" id="francFmOutput"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="button" name="calc" value="Calculate" onclick="calculate();">
+                            <input type="button" name="clear" value="Clear" onclick="clearinfo();"></td>
+                        </tr>
+                    </table>
+               </form>
+               </td>
+            </tr>
+        </table>
+
+    <script>
+        // declare the calculate function
+        function calculate() {
+            // declare the constants and the variables
+            const dollar = 1.00;
+            const euroCurr = .87;
+            const poundCurr = .74;
+            const australianCurr = 1.36;
+            const pesosCurr = 20.49;
+            const canadianCurr = 1.25;
+            const liraCurr = 10.03;
+            const yenCurr = 113.87;
+            const francCurr = .92;
+
+            var usDollar;
+            var euro
+            var pound;
+            var australian;
+            var pesos;
+            var canadian;
+            var lira;
+            var yen;
+            var franc;
+
+            // Get the values from the text fields
+            usDollar = parseFloat(document.theform.usDollarfm.value);
+
+            // Perform all calculations
+            euro = parseFloat(usDollar * euroCurr);
+            pound = parseFloat(usDollar * poundCurr);
+            australian = parseFloat(usDollar * australianCurr);
+            pesos = parseFloat(usDollar * pesosCurr);
+            canadian = parseFloat(usDollar * canadianCurr);
+            lira = parseFloat(usDollar * liraCurr);
+            yen = parseFloat(usDollar * yenCurr);
+            franc = parseFloat(usDollar * francCurr);
+
+            // display all calculations
+            document.getElementById("euroFmOutput").innerHTML = "$ " + euro.toFixed(2);
+            document.getElementById("poundFmOutput").innerHTML = "$ " + pound.toFixed(2);
+            document.getElementById("australianFmOutput").innerHTML = "$ " + australian.toFixed(2);
+            document.getElementById("pesosFmOutput").innerHTML = "$ " + pesos.toFixed(2);
+            document.getElementById("canadianFmOutput").innerHTML = "$ " + canadian.toFixed(2);
+            document.getElementById("liraFmOutput").innerHTML = "$ " + lira.toFixed(2);
+            document.getElementById("yenFmOutput").innerHTML = "$ " + yen.toFixed(2);
+            document.getElementById("francFmOutput").innerHTML = "$ " + franc.toFixed(2);
+        }
+
+        // declare the clear fuction
+        function clearinfo() {
+            document.theform.usDollarfm.value = " ";
+
+            document.getElementById("euroFmOutput").innerHTML = " ";
+           document.getElementById("poundFmOutput").innerHTML = " ";
+            document.getElementById("australianFmOutput").innerHTML = " " ;
+            document.getElementById("pesosFmOutput").innerHTML = " " ;
+            document.getElementById("canadianFmOutput").innerHTML = " ";
+            document.getElementById("liraFmOutput").innerHTML = " " ;
+            document.getElementById("yenFmOutput").innerHTML = " " ;
+            document.getElementById("francFmOutput").innerHTML = " " ;
+
+            document.theform.usDollarfm.focus();
+        }
+
+        function getImages() {
+
+            document.theform.usDollarfm.focus();
+
+            // Create the array of images
+            images = new Array(5);
+
+            // type in the getElementById line here
+            display = document.getElementById("display");
+
+            // Initialize the array with the images
+            images[0] = "<img src='currex1.jpg' alt='image of currency 1'>";
+            images[1] = "<img src='currex2.jpg' alt='image of currency 2'>";
+            images[2] = "<img src='currex3.jpg' alt='image of currency 3'>";
+            images[3] = "<img src='currex4.jpg' alt='image of currency 4'>";
+            images[4] = "<img src='currex5.jpg' alt='image of currency 4'>";
+
+            // Get a random index into the array
+            x = Math.floor(Math.random() * images.length);
+
+            //Display the image on the HTML table 
+            display.innerHTML = images[x];
+        }
+        getImages();
+    </script>
+
+<p></p>
+     
+<a href="http://csnet.southtexascollege.edu/localuser/cchurtad/">Go Back to HOMEPAGE</a><br>
+<strong>Cesna Hurtado</strong>
+</body>
+
+</html>
